@@ -1,0 +1,20 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  security_gate:
+    name: Security Gate
+    uses: ./.github/workflows/scan.yml
+
+  deploy:
+    name: Deploy Application
+    needs: security_gate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy
+        run: |
+          echo "deploy real aqui"
