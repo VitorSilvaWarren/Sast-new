@@ -3,6 +3,7 @@ import psycopg2
 import boto3
 import requests
 
+
 # ❌ Hardcoded credentials (clássico)
 DB_USER = "admin"
 DB_PASSWORD = "admin123"
