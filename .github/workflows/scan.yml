@@ -8,7 +8,7 @@ on:
 
 jobs:
   trivy_scan:
-    name: Trivy FS / Secrets Scan
+    name: Trivy FS (Secrets + Vulns + Misconfig)
     runs-on: ubuntu-latest
 
     steps:
@@ -20,7 +20,7 @@ jobs:
         with:
           scan-type: fs
           scan-ref: .
-          scanners: secret,misconfig
+          scanners: secret,vuln,misconfig
           exit-code: 0
           format: table
           hide-progress: true
