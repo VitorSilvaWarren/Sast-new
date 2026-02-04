@@ -23,6 +23,8 @@ jobs:
           scanners: secret,config
           exit-code: 1
           format: table
+          output: trivy-report.json
+          args: --quiet
 
       - name: Upload Trivy report
         if: always()
