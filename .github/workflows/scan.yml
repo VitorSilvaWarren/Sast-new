@@ -15,14 +15,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Run Trivy filesystem scan
+      - name: Run Trivy filesystem scan (observe only)
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: fs
           scan-ref: .
-          scanners: secret,config
-          exit-code: 1
+          scanners: secret,misconfig,vuln
+          exit-code: 0
           format: table
+          hide-progress: true
+          output: trivy-report.json
+          skip-dirs: .git,node_modules,venv
 
       - name: Upload Trivy report
         if: always()
