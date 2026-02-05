@@ -31,17 +31,6 @@ jobs:
           output: trivy-report.json
           skip-dirs: .git,node_modules,venv
 
-      - name: Add repository metadata to report
-        run: |
-          jq '. + {
-            project: "${{ github.event.repository.name }}",
-            repository: "${{ github.repository }}",
-            commit: "${{ github.sha }}",
-            workflow: "${{ github.workflow }}",
-            run_id: "${{ github.run_id }}"
-          }' trivy-report.json > trivy-report-with-meta.json
-          mv trivy-report-with-meta.json trivy-report.json
-
       - name: Upload Trivy report
         if: always()
         uses: actions/upload-artifact@v4
