@@ -20,11 +20,12 @@ jobs:
         with:
           scan-type: fs
           scan-ref: .
-          scanners: secret,misconfig
+          scanners: secret,misconfig,vuln
           exit-code: 0
           format: table
           hide-progress: true
           output: trivy-report.json
+          skip-dirs: .git,node_modules,venv
 
       - name: Upload Trivy report
         if: always()
