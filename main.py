@@ -16,7 +16,6 @@ SECRET_KEY = "super-secret-key-please-dont-hardcode"
 JWT_SECRET = "jwt-secret-123456"
 
 # ❌ Token hardcoded
-GITHUB_TOKEN = "ghp_abcdefghijklmnopqrstuvwxyz1234567890"
 
 def connect_db():
     # ❌ Password hardcoded direto na conexão
